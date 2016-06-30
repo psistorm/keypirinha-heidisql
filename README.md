@@ -1,2 +1,9 @@
-# keypirinha-heidisql
-Keypirinha plugin to easily start HeidiSQL and HeidiSQL sessions
+Keypirinha Plugin: HeidiSQL
+=========
+
+
+
+## Release Notes: ##
+
+V 1.0:
+First release of plugin.
