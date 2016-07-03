@@ -56,13 +56,13 @@ class HeidiSQL(kp.Plugin):
 
         self.set_catalog(catalog)
 
-    def on_suggest(self, user_input, initial_item, current_item):
-        if not initial_item or initial_item.category() != kp.ItemCategory.KEYWORD:
+    def on_suggest(self, user_input, items_chain):
+        if not items_chain or items_chain[0].category() != kp.ItemCategory.KEYWORD:
             return
 
         suggestions = []
 
-        data_bag = kpu.kwargs_decode(initial_item.data_bag())
+        data_bag = kpu.kwargs_decode(items_chain[0].data_bag())
         sessions = self._distros[data_bag['distro_name']]['sessions']
         for session in sessions:
             session_name = str(session).rpartition('\\')[2]
