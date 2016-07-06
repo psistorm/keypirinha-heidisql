@@ -17,21 +17,19 @@ class HeidiSQL(kp.Plugin):
 
     EXE_NAME_OFFICIAL = "HEIDISQL.EXE"
 
-    _registry_reader = None
-    _settings_reader = None
-
-    _default_icon_handle = None
-    _distros = {}
+    _registry_reader = HeidiRegistry()
+    _settings_reader = HeidiSettings()
 
     def __init__(self):
         super().__init__()
+
+        self._default_icon_handle = None
+        self._distros = {}
 
     def __del__(self):
         self._clean_icon()
 
     def on_start(self):
-        self._registry_reader = HeidiRegistry()
-        self._settings_reader = HeidiSettings()
         self._read_config()
 
     def on_catalog(self):
